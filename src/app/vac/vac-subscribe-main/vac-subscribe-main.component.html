@@ -1,0 +1,57 @@
+<section class="sub-stance header"  style="padding: 0px 0px 0px 0px;">
+    <div class="tab-title-service"></div>
+    <div class="substant-content">
+        <div class="row">
+            <div class="sub-title">
+                <h2 class="title-text text-capitalize text-center" style="margin-top: inherit;">| {{LANGUAGE.Health_Knowledge}} |</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 card-item" *ngFor="let listContents of ListContent">
+                    <a (click)="goContentbyId(listContents.contentId)">
+                        <div class="team-container">
+                            <img [src]="listContents.bannerResponsive720" alt="" class="img-fluid item">
+                            <div class="card text-center">
+                                <h5 class="name">{{listContents.topic}}</h5>
+                                <p class="team-para">{{listContents.detail}}</p>
+                                <p class="team-para" > <a (click)="goContentbyId(listContents.contentId)" style="color: #429bdd; font-size: 11pt;">...อ่านเพิ่มเติม</a></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 card-item"  *ngFor="let item of item">
+                    <a href="{{item.link}}">
+                        <div class="team-container">
+                            <img [src]="item.img" alt="" class="img-fluid item">
+                            <div class="card text-center">
+                                <p class="team-para">{{item.description}}</p>
+                                <p class="team-para" > <a href="{{item.link}}" style="color: #429bdd; font-size: 11pt;">{{item.orther}}</a></p>
+                            </div>
+                            <!-- <div class="card text-center">
+                                <h5 class="name">{{item.name}}</h5>
+                                <p class="team-para" >{{item.description}} <a href="{{item.link}}" style="color: #429bdd; font-size: 11pt;">{{item.orther}}</a></p>
+                            </div> -->
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 sub-title text-center">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<div class="row">
+    <div class="col-md-12 " style="text-align: -webkit-center">
+        <a href="./" class="btn btn-caregiver  btn-width-eco" role="button" >{{LANGUAGE.Go_to_Main_page}}</a>
+    </div>
+</div>
+<br>
+<app-vac-footer></app-vac-footer>
+</section>
+    <!--about end-->

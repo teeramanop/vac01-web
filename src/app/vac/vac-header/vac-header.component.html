@@ -1,0 +1,16 @@
+<section class="header overflow-unset">
+    <div class="switch-version d-none d-md-block" style="margin-right: 20px;">
+      <div class="switch-web-products ">
+      </div>
+    </div>
+  <div>
+      <owl-carousel-o   [options]="teamcarouselOptions" class="team-slider">
+        <ng-container  *ngFor="let banner of banner">
+          <ng-template carouselSlide class="item">
+            <img   [src]="banner.img" class="banner-img">
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+  </div>
+</section>
+

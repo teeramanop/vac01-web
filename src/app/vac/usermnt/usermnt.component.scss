@@ -1,0 +1,102 @@
+.title-usermnt{
+  background-color: #73a4c6;
+  height: 210px;
+}
+
+.title-text{
+  font-size: 27px;
+  font-weight: 800;
+  color: #fff;
+  padding-block-start: 135px;
+}
+
+.panel{
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.panel-heading{
+  padding: 70px 36px 68px 36px;
+  background-color:#555c65;
+  color: #4fac8b;
+  font-size: 13pt;
+  font-weight: 800;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.panel-body{
+  padding: 15px 15px 15px 15px;
+  font-size: 14pt;
+  border-radius: 0px 0px 20px 20px;
+  background-color: #555c65;
+}
+
+.text-title{
+  border-bottom: 3px solid #a9acb1;
+  padding: 3px 0px 10px 0px;
+  margin: 0px 5px 0px 5px;
+}
+
+.text-red{
+  color: red;
+  font-size: 11pt;
+}
+
+
+.btn-width {
+  width: 85%;
+}
+
+.btn-vac{
+  padding: 10px;
+  background-color: #4fad8a;
+  border-radius: 20px;
+  color: #fff;
+  height: 45px;
+}
+
+.btn-vac:hover{
+  border: 1px solid #4fad8a;
+  background-color: #fff;
+  color: #4fad8a;
+}
+
+
+
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.mat-header-cell {
+  font-size: 14px;
+  font-weight: bolder;
+  background-color:#555c65;
+  color: #4fac8b;
+}
+
+.mat-row {
+  background-color: #555c65;
+}
+
+.mat-row:hover {
+  background-color: grey;
+}
+
+.mat-cell {
+  color: white;
+}
+
+.mat-paginator {
+  color: white;
+  background-color: #555c65;
+}

@@ -1,0 +1,30 @@
+<ng-template #dialogSuccess let-modal>
+    <div class="service" >
+    <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closeModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+           <h6 class="text-center text-red mb-4" style="margin-bottom:10px;">ท่านทำรายการเกินกำหนดระยะเวลา กรุณาทำรายการใหม่อีกครั้ง</h6>
+          <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <button class="btn btn-caregiver" (click)="closeModal()" triggers="enter:click" style="width: 100%;">
+                <i class="i-Male-21"></i> ตกลง
+              </button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

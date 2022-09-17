@@ -1,0 +1,316 @@
+<ng-template #loginModal let-modal>
+  <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+          <a id="Close" name="close" class="close" (click)="closeCreateUser()" tabindex="3" aria-label="Close"
+            style="cursor: default;">
+            <span aria-hidden="true" title="ปิด" class="span-close-button">X</span>
+          </a>
+        </div>
+        <div class="p-4">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="form-group">
+                <label class="input-label-font" for="username">{{LANGUAGE.Username}} </label><strong
+                  style="color: #292929;">&nbsp;</strong><label class="text-red1" *ngIf="LoginClassErrorMsg2 != ''">
+                  {{LoginClassErrorMsg2}}</label>
+                <input id="username" name="new-password" [className]=userNameModalClass [(ngModel)]="username"
+                  type="text" (keydown)="onKeydown($event)" autocomplete="new-password"
+                  placeholder="{{LANGUAGE.usernamePlaceholder}}">
+              </div>
+              <div class="form-group">
+                <label class="input-label-font" for="password">{{LANGUAGE.password}}</label><strong style="color: #292929;">
+                </strong><label class="text-red1" *ngIf="LoginClassErrorMsg1 != ''">   {{LoginClassErrorMsg1}}</label>
+                <div class="form-group" style="display: -webkit-box;">
+                  <!-- <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"> -->
+                  <input matInput id="password" [className]=passwordModalClass [(ngModel)]="password"
+                    (keydown)="onKeydown($event)" autocomplete="SetAutoCompleteOff" placeholder="{{LANGUAGE.passwordPlaceholder}}"
+                    [type]="hide ? 'password' : 'text'" style="padding-right: 50px;">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide" style="margin-left: -53px;height: 40px;margin-top: 3px; outline: none;">
+                    <mat-icon style="color: #fff;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <br>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <button style="font-size: 14pt;" class="btn btn-caregiver  btn-outline-email btn-block btn-icon-text"
+                (click)="checkLogin()" triggers="enter:click">
+                <i class="i-Male-21"></i>{{LANGUAGE.btnLogin}}
+              </button>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="mt-3">
+                <a class="text-muted text-left" style="margin-right: 10px;color: #ffffff !important; font-size: 12pt;"
+                  (click)="openRegister(registerModal)"><u><b style="color: #ffffff;">{{LANGUAGE.createAccount}}</b></u></a>
+                <a class="text-muted text-left" style="margin-right: 10px;color: #46b84b  !important; font-size: 12pt;"
+                  (click)="openForgetModal(forgotPassword)"><u><b style="color: #46b84b;">{{LANGUAGE.ForgotPassword}}</b></u></a>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #registerModal let-modal>
+  <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+          <a id="Close" name="close" class="close" (click)="closeCreateUser()" tabindex="3" aria-label="Close"
+            style="cursor: default;">
+            <span aria-hidden="true" title="ปิด" class="span-close-button">X</span>
+          </a>
+        </div>
+        <div class="p-4">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <h6 class="text-center text-red1 mb-4" style="margin-bottom:10px;" *ngIf="CreateUserError != ''">
+            {{CreateUserError}}</h6>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="username" class="input-label-font">{{LANGUAGE.regisName}} <span class="text-red">*</span></label>
+              </div>
+              <div class="col-md-8">
+                <input id="username" name="name" [className]=userNameClass autocomplete="SetAutoCompleteOff"
+                  [(ngModel)]="createProfile.userName" type="text" placeholder="{{LANGUAGE.regisNamePlaceholder}}"
+                  required>
+                <span class="text-red" *ngIf="userNameClassErrorMsg != ''">{{userNameClassErrorMsg}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="password" class="input-label-font">{{LANGUAGE.regisPass}} <span class="text-red">*</span></label>
+              </div>
+                <div class="col-md-8" style="display: -webkit-box;">
+                  <input id="password" [className]=passwordClass [(ngModel)]="createProfile.password" type="password"
+                    placeholder="{{LANGUAGE.regisPassPlaceholder}}" required
+                    (blur)="onValidatePassword(createProfile.password)" autocomplete="new-password"
+                    [type]="hide ? 'password' : 'text'">
+                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide" style="margin-left: -53px;height: 40px;margin-top: 3px; outline: none;">
+                    <mat-icon style="color: #fff;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </div>
+                <div class="col-md-4"> </div>
+                <div class="col-md-8"> <span class="text-red" *ngIf="passwordClassErrorMsg != ''">{{passwordClassErrorMsg}}</span></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="passwordConfirm" class="input-label-font">{{LANGUAGE.regisPassCon}} <span
+                    class="text-red">*</span></label>
+              </div>
+              <div class="col-md-8" style="display: -webkit-box;">
+                <input id="passwordConfirm" [className]=confrimPasswordClass [(ngModel)]="createProfile.passwordConfirm"
+                  type="password" required placeholder="{{LANGUAGE.regisPassPlaceholder}}" [type]="hide1 ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide" style="margin-left: -53px;height: 40px;margin-top: 3px; outline: none;">
+                  <mat-icon style="color: #fff;">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </div>
+              <div class="col-md-4"> </div>
+                <div class="col-md-8">
+                  <span class="text-red"
+                  *ngIf="confrimPasswordClassErrorMsg != ''">{{confrimPasswordClassErrorMsg}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="email" class="input-label-font">{{LANGUAGE.regisEmail}} <span class="text-red">*</span></label>
+              </div>
+              <div class="col-md-8">
+                <input id="email" [className]=emailClass [(ngModel)]="createProfile.email" type="email"
+                  autocomplete="SetAutoCompleteOff" placeholder="Example@email.com" [email]="true" required>
+                <span class="text-red" *ngIf="emailClassErrorMsg != ''">{{emailClassErrorMsg}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <label for="telNumber" class="input-label-font">{{LANGUAGE.regisTel}}<span class="text-red" style="margin-left:7px">*</span></label>
+              </div>
+              <div class="col-md-8">
+                <input id="tel" [className]=telClass [(ngModel)]="createProfile.tel_1" autocomplete="SetAutoCompleteOff"
+                  placeholder="{{LANGUAGE.regisTelPlaceholder}}" type="text" autocomplete="SetAutoCompleteOff"
+                  (keypress)="numberOnly($event)" maxlength="10">
+                <span class="text-red" *ngIf="telClassErrorMsg != ''">{{telClassErrorMsg}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <button style="font-size: 17px;"
+                class="btn btn-rounded btn-caregiver  btn-outline-email btn-block btn-icon-text"
+                (click)="createUser(policyRegister)" data-backdrop="static">
+                <i class="i-Male-21"></i>{{LANGUAGE.bbtnRegis}}
+              </button>
+            </div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #policyRegister let-modal>
+  <div class="card no-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+          <a id="Close" name="close" class="close" (click)="closeCreateUser()" tabindex="3" aria-label="Close"
+            style="cursor: default;">
+            <span aria-hidden="true" title="ปิด" class="span-close-button">X</span>
+          </a>
+        </div>
+        <div class="p-4">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="modal-header" style="place-content: center;">
+            <h6 class="modal-title" style="text-align: center ; color: #ffffff !important; font-size: 12pt;">
+              ข้อกำหนดและเงื่อนไขการใช้บริการระบบ <br></h6>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body" style="height: 320px; overflow: auto;">
+            <p class="ctl" style="color: #ffffff;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            </p>
+          </div>
+          <div class="modal-footer">
+            <div class="row" style="color: #ffffff;display: inline;">
+              <input type="checkbox" class="input-label-font" name="vehicle1" [(ngModel)]="newTrustFormVisible"
+                value="true">&nbsp; ยอมรับ<br>
+            </div>
+            <div class="row">
+              <div class="col-md-12" style="height: 30px;width: 100px;padding-right: 0px;">
+                <button
+                  class="btn btn-rounded btn-caregiver btn-outline-primary btn-outline-email btn-block btn-icon-text"
+                  (click)="acceptPolicy(registerModal)" [hidden]="!newTrustFormVisible"><i class="i-Male-21"></i>ยอมรับ
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #forgotPassword let-modal>
+  <div class="service">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header button-close-header">
+            <a id="Close" name="close" type="button" class="close" (click)="closeForgetModel(loginModal)"
+              aria-label="Close" style="cursor: default;">
+              <span aria-hidden="true" title="ปิด" class="span-close-button">X</span>
+            </a>
+          </div>
+          <div class="p-4">
+            <button type="button" (click)='pop2.hide()' class="close" aria-label="Close"></button>
+            <div class="auth-logo text-center mb-4">
+              <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+            </div>
+            <h6 class="text-center text-red mb-4" style="margin-bottom:10px;" *ngIf="forgetPassErrorMsg != ''">
+              {{forgetPassErrorMsg}}</h6>
+            <div class="row" style="display: grid;">
+              <label class="input-label-font text-center" style="margin-bottom: 1rem;" for="email">{{LANGUAGE.resetpass}}</label>
+            </div>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <div class="form-group">
+                  <input id="email" name="new-password" [className]=emailForgetModalClass [(ngModel)]="emailForget"
+                    type="text" (keydown)="onKeydownForgetPassword($event)" placeholder="{{LANGUAGE.placeholderReset}}"
+                    autocomplete="new-password">
+                </div>
+              </div>
+              <p>&nbsp;</p>
+              <div class="col-md-1"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button
+                  class="btn btn-rounded btn-caregiver btn-outline-primary btn-outline-email btn-block btn-icon-text"
+                  (click)="checkForgetPassword()" triggers="enter:click">
+                  <i class="i-Male-21"></i> {{LANGUAGE.btnResetpas}}
+                </button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #dialogSuccess let-modal>
+  <div class="">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header button-close-header">
+            <a id="Close" name="close" type="button" class="close" (click)="closeModal()" aria-label="Close"
+              style="cursor: default;">
+              <span aria-hidden="true" title="ปิด" class="span-close-button">X</span>
+            </a>
+          </div>
+          <div class="p-3">
+            <div class="auth-logo text-center mb-4">
+              <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+            </div>
+            <h6 class="text-center text-red mb-4" style="margin-bottom:10px;">{{dialogSuccessMessage}}</h6>
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                <button class="btn btn-caregiver" (click)="closeModal()" triggers="enter:click" style="width: 100%;">
+                  <i class="i-Male-21"></i> ตกลง
+                </button>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #customLoadingTemplate>
+  <div class="loading-screen-wrapper">
+  </div>
+</ng-template>
+<ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>

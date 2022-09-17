@@ -1,0 +1,109 @@
+@media only screen and (min-device-width: 0px) and (max-device-width: 768px) and (orientation : portrait)  {
+    .left02 {display: inline-block !important;}
+    .left01 {display: none;}
+    .vac-logo{
+        margin-left: auto !important;
+    }
+    .btn-login-01{
+        display: none !important;
+    }
+    .img-logo {
+        margin-left: 0% !important;
+    }
+    
+  }
+  @media only screen and (min-device-width: 0px) and (max-device-width: 499px) and (orientation : landscape)  {
+    .left02 {display: inline-block !important;}
+    .left01 {display: none;}
+    .vac-logo{
+        margin-left: auto !important;
+    }
+    .btn-login-01{
+        display: none !important;
+    }
+    .img-logo {
+        margin-left: 0% !important;
+    }
+    
+  }
+  @media only screen and (min-device-width: 500px) and (max-device-width: 768px) and (orientation : landscape)  {
+    .left02 {display: none !important;}
+    .left01 {display: inline-block;}
+    .vac-logo{
+        margin-left: auto !important;
+    }
+    .btn-login-01{
+        display: none !important;
+    }
+    .img-logo {
+        margin-left: 0% !important;
+    }
+    
+  }
+@media only screen and (min-device-width:769px) and (max-device-width:960px) and (orientation : portrait){
+    .left01 {display: none;}
+    .vac-logo{
+        margin-left: auto !important;
+    }
+    .btn-login-01{
+        display: none !important;
+    }
+    .img-logo {
+        margin-left: 0% !important;
+    }
+    
+}
+@media only screen and (min-device-width:769px) and (max-device-width:960px) and (orientation : landscape){
+    .left01 {display: inline;}
+    .left02 {display: none;}
+    .vac-logo{
+        margin-left: auto !important;
+    }
+    .btn-login-01{
+        display: none !important;
+    }
+    .img-logo {
+        margin-left: 0% !important;
+    }
+    
+}
+
+@media only screen and (min-device-width: 961px) and (max-device-width: 3480px) and (orientation : landscape) {
+        .left02 {display: none;}
+         
+     }
+@media only screen and (min-device-width: 961px) and (max-device-width: 3480px) and (orientation : portrait)  {
+        .left02 {display: none;}
+         
+     }
+
+// @media only screen 
+//   and (min-device-width: 1024px) 
+//   and (max-device-width: 1366px)
+//   and (-webkit-min-device-pixel-ratio: 2) {
+//     .left02 {display: none;}
+
+// }
+// @media only screen 
+//   and (min-device-width: 1366px) 
+//   and (max-device-width: 1366px) 
+//   and (orientation: landscape) 
+//   and (-webkit-min-device-pixel-ratio: 2) {
+//     .left02 {display: none;}
+// }
+//  .container1, .container1-sm, .container1-md, .container1-lg, .container-xl {
+//     max-width: 1450px;
+//  }
+.vac-logo{
+    padding: 0px;
+}
+
+.brand-logo{
+    height: 75px;
+}
+.img-logo {
+    margin-left: 0%;
+}
+// .img-logo {
+//     margin-left: 77%;
+// }

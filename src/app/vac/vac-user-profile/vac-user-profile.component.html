@@ -1,0 +1,189 @@
+<section class="user-profile">
+    <div class="title-user-profile">
+        <h2 class="title-text text-capitalize text-center" id="">| {{LANGUAGE.PersonalInformation}} |
+        </h2>
+    </div>
+</section>
+    <div class="row contain-row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="c text-center mb-4" style="margin-top: 1.5rem; margin-left: 0.5rem;">
+                                        <img *ngIf="imgProfile == null" src="./assets/images/avatar_107645.png" alt="" class="img-logo circle" style="image-orientation: from-image;" >
+                                        <img *ngIf="imgProfile != null" src="{{imgProfile}}" alt="" class="img-logo circle" style="image-orientation: from-image;" >
+                                    </div>
+                                    <div class="auth-logo text-center mb-4" style="margin-top: 0.5rem; margin-right: -0.5rem;">
+                                          <div class="btn-group chang-img1" (click)="fileInput.click()" style="width: 85%;">
+                                            <button style="font-size: 13pt;" class="btn btn-caregiver " (click)="clearFile()">
+                                                <i class="i-Male-21" ></i>{{LANGUAGE.Changephoto}}
+                                            </button>
+                                        </div>
+                                        <span class="hidden-file">
+                                            <input type="file" id="file" #fileInput (change)="handleFileInput($event.target.files)">
+                                            <!-- <input type="file" name="attachment" #fileInput ng2FileSelect [uploader]="uploader" (click)="clearFile()" (onFileSelected)="onFileSelected(uploader)" /> -->
+                                        </span>
+                                        <p class="text-userprofile">{{LANGUAGE.filesSupports}}</p>
+                                        <p class="text-userprofile">{{LANGUAGE.sizePixel}}</p>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="text-title">{{LANGUAGE.profileTitel}}</div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userId" style="margin-top: 10px;">{{LANGUAGE.profileUser}}</label>
+                                                <input type="text" disabled="disabled" [(ngModel)]="userId" name="userId" id="userId">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email" style="margin-top: 10px;"> {{LANGUAGE.profileEmail}} </label>
+                                                <input type="text" disabled="disabled" [(ngModel)]="email" name="email" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="firstname">{{LANGUAGE.profileName}} <span class="text-red">*</span></label>
+                                                <input type="text"  [(ngModel)]="userFname" name="userFname" id="userFname" required>
+                                                <span class="text-red" *ngIf="userFnameErrorMsg != ''">{{userFnameErrorMsg}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="lastName">{{LANGUAGE.profileLastName}} <span class="text-red">*</span></label>
+                                                <input type="text" [(ngModel)]="userLname" name="userLname" id="userLname">
+                                                  <span class="text-red" *ngIf="userLnameErrorMsg != ''">{{userLnameErrorMsg}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="tel_1">{{LANGUAGE.profilePhone}} <span class="text-red">*</span></label>
+                                                    <input type="text" [(ngModel)]="phone1" name="phone1" id="phone1" required placeholder="" (keypress)="numberOnly($event)"   maxlength="10">
+                                                    <span class="text-red" *ngIf="phone1ClassErrorMsg != ''">{{phone1ClassErrorMsg}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="tel_2">{{LANGUAGE.profilePhoneAlternate}}  </label>
+                                                    <input type="text" [(ngModel)]="phone2" name="phone2" id="phone2" required placeholder="" (keypress)="numberOnly($event)"  maxlength="10" >
+                                                    <span class="text-red" *ngIf="phone2ClassErrorMsg != ''">{{phone2ClassErrorMsg}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                        </div>
+                                      </div>
+                                        <div class ="row">
+                                            <div class="col-md-4 btn-profile1">
+                                              <button class="btn btn-caregiver btn-width" (click)="openModalChangePassword()" >
+                                                  <i class="i-Male-21"></i>{{LANGUAGE.btngoChangePassword}}
+                                              </button>
+                                          </div>
+                                          <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                                              <button class="btn btn-caregiver btn-width" (click)="saveUpdate()" data-backdrop="static" >
+                                                  <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+                                              </button>
+                                          </div>
+                                          <div class="col-md-4 btn-profile3" style="text-align: -webkit-left;padding:5px;">
+                                                  <a href="" class="btn btn-caregiver btn-width" role="button"  >{{LANGUAGE.btngoMain}}</a>
+                                          </div>   
+                                        </div>
+                                </div>
+                            </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+<ng-template #confirmPasswordModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closeConfirmPasswordModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+        </div>
+           <h6 class="text-center text-red mb-4" style="margin-bottom:10px;"  *ngIf="forgetPassErrorMsg != ''">{{changePassErrorMsg}}</h6>
+           <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="form-group">
+                <label for="id_card">{{LANGUAGE.NewPassword}} <span class="text-red">*</span></label>
+                <div style="display: -webkit-box;">
+               <input type="password" [(ngModel)]="password" autocomplete="off" name="password" id="password"
+                required placeholder="{{LANGUAGE.regisPassPlaceholder}}" [type]="hide1 ? 'password' : 'text'">
+            </div>
+              </div>
+            </div>
+             <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+              <div class="col-md-10">
+              <div class="form-group">
+                 <label for="id_card">{{LANGUAGE.ConfirmNewPassword}} <span class="text-red">*</span></label>
+                 <div style="display: -webkit-box;">
+                  <input type="password" [(ngModel)]="confirmPassword" autocomplete="off" name="confirmPassword" 
+                  id="confirmPassword" required placeholder="{{LANGUAGE.regisPassPlaceholder}}" [type]="hide2 ? 'password' : 'text'">
+            </div>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-rounded chang-img btn-caregiver btn-outline-primary btn-outline-email btn-icon-text" (click)="updateUserProfilePassword()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnReset}}
+              </button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+<ng-template #dialogSuccess let-modal>
+    <div class="service margin-right15">
+    <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closeModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+           <h6 class="text-center text-red mb-4" style="margin-bottom:10px;">{{dialogSuccessMessage}}</h6>
+          <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6 " style="text-align: center;">
+              <button class="btn btn-caregiver buttom-width-mobile" (click)="closeModal()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.Ok}}
+              </button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>

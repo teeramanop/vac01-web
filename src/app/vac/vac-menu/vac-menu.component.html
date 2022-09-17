@@ -1,0 +1,91 @@
+<a  class="overlay-sidebar-header" [class.overlay-sidebar-header-open]="openSide" (click)="closeOverlay()"></a>
+<div class="responsive-btn">
+    <a (click)="toggleSidebar()">
+        <i class="fa fa-bars text-white" aria-hidden="true"></i>
+    </a>
+</div>
+
+<div class="navbar m-l-auto srcall" id="togglebtn" [class.openSidebar]="openSide" >
+
+    <ul class="main-menu">
+      <li class="responsive-btn1 ">
+            <a  id="home" class="menu-vac" href="/" >{{LANGUAGE.HOME}}</a>
+      </li>
+
+
+      <!-- <li class="nav-item dropdown menu-vac" *ngIf="this.tokenStored.getUsername()">
+        <a class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{this.tokenStored.getUsername()}}</b></u></a> 
+        <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item menu-vac" href="userProfile">{{LANGUAGE.Edit_account}}</a>
+          <a class="dropdown-item menu-vac" (click)="logout()" href="" >{{LANGUAGE.Logout}}</a>
+        </div>
+      </li>
+
+
+      <li class="nav-item dropdown menu-vac" *ngIf="this.tokenStored.getUsername() && securityadminproc">
+        <a class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{LANGUAGE.securityadminproc}}</b></u></a> 
+        <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+          <a *ngIf=usermntact class="dropdown-item menu-vac" href="usermnt">{{LANGUAGE.usermnt_menu}}</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown menu-vac" *ngIf="this.tokenStored.getUsername() && setupproc">
+        <a class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{LANGUAGE.setupproc}}</b></u></a> 
+        <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+          <a *ngIf=companymntact class="dropdown-item menu-vac" href="companymnt">{{LANGUAGE.companymnt_menu}}</a>
+          <a *ngIf=warehousemntact class="dropdown-item menu-vac" href="warehousemnt">{{LANGUAGE.warehousemnt_menu}}</a>
+        </div>
+      </li>
+
+      <li *ngIf="!this.tokenStored.getUsername()">
+        <button (click)="openLogin()" class="btn btn-login"><fa name="user"></fa> {{LANGUAGE.Enter_website}}</button>
+      </li>
+
+      <li  class="th-magin"  *ngIf="route == ''">
+            <button  (click) = "Longselect(lang)"  *ngFor="let lang of translate.getLangs() " [value] ="lang" class="btn btn-lang menu-vac th-margin" style="margin-left: 5px; text-transform: uppercase;"><span  class="span-lang">{{lang}}</span></button>
+      </li> -->
+    </ul>
+
+    
+    <ul *ngFor="let group of menuGroup">
+      <li class="nav-item dropdown menu-vac" *ngIf="this.tokenStored.getUsername()">
+        <a *ngIf=isEn class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{ group.processId }}</b></u></a> 
+        <a *ngIf=!isEn class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{ group.processName }}</b></u></a> 
+        <div  class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+          <li *ngFor="let item of group.procIds">
+            <a *ngIf=isEn class="dropdown-item menu-vac" href="{{ item.progId }}">{{ item.progName }}</a>
+            <a *ngIf=!isEn class="dropdown-item menu-vac" href="{{ item.progId }}">{{ item.progDesc }}</a>
+          </li>
+        </div>
+      </li>
+    </ul>
+    <ul>
+      <li class="nav-item dropdown menu-vac" *ngIf="this.tokenStored.getUsername()">
+        <a class="user-login text-left"  style="color:#396756; font-size: 13pt;text-transform: none;" ><u><b style="color: #396756;">{{this.tokenStored.getUsername()}}</b></u></a> 
+        <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item menu-vac" href="userProfile">{{LANGUAGE.Edit_account}}</a>
+          <a class="dropdown-item menu-vac" (click)="logout()" href="" >{{LANGUAGE.Logout}}</a>
+        </div>
+      </li>
+    </ul>
+    <ul>
+      <li *ngIf="!this.tokenStored.getUsername()">
+        <button (click)="openLogin()" class="btn btn-login"><fa name="user"></fa> {{LANGUAGE.Enter_website}}</button>
+      </li>
+      <li  class="th-magin"  *ngIf="route == ''">
+        <button  (click) = "Longselect(lang)"  *ngFor="let lang of translate.getLangs() " [value] ="lang" class="btn btn-lang menu-vac th-margin" style="margin-left: 5px; text-transform: uppercase;"><span  class="span-lang">{{lang}}</span></button>
+      </li>
+    </ul>
+
+    <!-- <ul *ngFor="let group of menuGroup">
+      <li>{{ group.processName }}</li>
+      <ul>
+       <li *ngFor="let item of group.procIds">
+         {{ item.progId }}
+       </li>
+      </ul>
+    </ul> -->
+    
+</div>
+
+<app-vac-modal-login (messageEvent)="receiveModalPopup($event)"></app-vac-modal-login>

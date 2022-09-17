@@ -1,0 +1,114 @@
+.btn-default.btn-green {
+    border: transparent;
+    position: relative;
+    background-color: #4bba79;
+    // background-image: -webkit-gradient(linear, left top, left bottom, from(#F66E54), to(#FF534B));
+    // background-image: linear-gradient(#F66E54, #FF534B);
+    // background-image: -webkit-gradient(linear, left top, right top, from(#F66E54), color-stop(#FF534B), color-stop(#FF534B), to(#F66E54));
+    // background-image: linear-gradient(to right, #F66E54, #FF534B, #FF534B, #F66E54);
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-size: 300% 100%;
+}
+
+.text-margin{
+    margin-bottom: 15px;
+}
+// ABOUT US ICON COLLECTION
+.icon-aboutus {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; 
+}
+.icon-aboutus .about-icon {
+    margin: 0 18px;
+    -webkit-filter: drop-shadow(0 0 10px #eee);
+            filter: drop-shadow(0 0 10px #eee);
+    border-radius: 20px;
+    background-color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; 
+}
+.icon-aboutus .about-icon a {
+    padding: 18px 20px; 
+}
+.icon-aboutus .about-icon:hover {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background-color: #4bba79; 
+}
+.icon-aboutus .about-icon:hover a h5, .icon-collection .about-icon:hover a h6, .icon-collection .about-icon:hover a h4 {
+    color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; 
+}
+
+
+/// New Modal Design
+.bg-careadviser{
+    background-color: #74a5c6;
+    width:100%;
+    margin-bottom:40%;
+    padding-top: 30%;
+}
+.container-careadvisor{
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    right: 15%;
+}
+
+
+.panel-form{
+    border: 1px solid #cccccc;
+    padding: 30px 15px 15px 15px;
+    border-radius: 10px;
+}
+.title-panel{
+    font-size: 15pt;
+    font-weight: 800;
+    padding: 0px 10px 0px 10px;
+    position: absolute;
+    margin: -47px 0px 0px 0px;
+    background-color: #ffffff;
+}
+
+.btn-grnstar{
+    height: 30px;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+}
+
+.panel{
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.panel-heading{
+    padding: 10px 10px 10px 10px;
+    background-color: #555c65;
+    color: #4fac8b;
+    font-size: 16pt;
+    font-weight: 800;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.panel-body{
+    padding: 15px 15px 15px 15px;
+    font-size: 14pt;
+    border-radius: 0px 0px 20px 20px;
+    background-color: #555c65;
+}
+.text-title{
+    border-bottom: 3px solid #a9acb1;
+    padding: 3px 0px 10px 0px;
+    margin: 0px 5px 0px 5px;
+}
+.label-service{
+    font-size: 13pt;
+    font-weight: 800;
+    color: #bac2c8;
+}
+.img-logo{
+    height: 300px;
+}

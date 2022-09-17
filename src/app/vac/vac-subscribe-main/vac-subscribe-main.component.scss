@@ -1,0 +1,183 @@
+@media only screen and (min-width:0px) and (max-width:480px){
+    .row-us{
+        display: inline !important;
+        padding: 10px 20px 10px 20px !important;
+        text-align: justify;
+            }
+    .btn-width-eco{
+        width: 53% !important;
+    }
+    .card{
+        height:100% !important;
+        }
+}
+@media only screen and (min-width:481px) and (max-width:768px){
+    .row-us{
+        display: inline !important;
+        padding: 10px 20px 10px 20px !important;
+        text-align: justify;
+    }
+    .btn-width-eco{
+        width: 41% !important;
+    }
+    .card{
+        height:100% !important;
+       }
+}
+@media only screen and (min-width:769px) and (max-width:960px){
+    .row-us{
+        display: inline !important;
+        padding: 10px 20px 10px 20px !important;
+        text-align: justify;
+    }
+    .btn-width-eco{
+        width: 41% !important;
+    }
+    .card{
+        height:160px !important;
+    }
+}
+@media only screen and (min-width:961px) and (max-width:1280px){
+    .btn-width-eco{
+        width: 19% !important;
+    }
+    .row-us{
+        padding: 10px 200px 10px 200px !important;
+        text-align: justify !important;
+    }
+    .card{
+        height:160px !important;
+    }
+}
+@media only screen and (min-width:1281px) and (max-width:1366px){
+    .btn-width-eco{
+        width: 15% !important;
+    }
+    .row-us{
+        text-align: justify !important;
+    }
+}
+@media only screen and (min-width:1367px) and (max-width:1920px){
+    .btn-width-eco{
+        width: 15% !important;
+    }
+    .row-us{
+        padding: 10px 244px 10px 244px !important;
+        text-align: justify !important;
+    }
+}
+
+.contain-row{
+   padding: 10px 0px 10px 0px;
+   margin: initial;
+}
+.btn-caregiver{
+   width: 100%;
+   padding: 10px;
+   background-color: #4fad8a;
+   border-radius: 20px;
+   color: #fff;
+   height: 45px;
+}
+.btn-caregiver:hover{
+   border: 1px solid #4fad8a;
+   background-color: #fff;
+   color: #4fad8a;
+}
+.sub-stance{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.tab-title-service{
+    height: 55px;
+    background-color: #add2ec;
+    width: 100%;
+}
+
+.substant-content{
+    width: 100%;
+    background-color: #73a4c6;
+    margin-top: 20px;
+}
+
+.sub-title{
+    width: 100%;
+    margin: 25px 0px 25px 0px;
+}
+
+.title-text{
+    font-size: 27px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.team-container{
+    background-color: #fff;
+}
+
+.card{
+    height: 130px;
+    padding-inline-start: 15px;
+    padding: 10px 0px 10px 0px;
+}
+
+.name{
+    font-size: 17px;
+    font-weight: 800;
+    text-align: left;
+    margin: 7px;
+}
+
+.team-para{
+    font-size: 17px;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    overflow: hidden;
+    color: #747476;
+    text-align: left;
+    margin: 7px;
+}
+
+.btn-content{
+    background-color: #346d96;
+    color: #fff;
+    border: none;
+    padding: 15px 110px 15px 110px;
+    font-size: 15pt;
+    border-radius: 30px;
+}
+.btn-content:hover{
+    background-color: #fff;
+    color: #346d96;
+    border: none;
+    padding: 15px 110px 15px 110px;
+    font-size: 15pt;
+    border-radius: 30px;
+}
+
+.owl-prev{
+    position: absolute;
+    top: 0%;
+    background-color: #ffffffc4;
+    height: 94%;
+    width: 50%;
+    left: 0px;
+}
+
+.owl-next{
+    position: absolute;
+    top: 0%;
+    background-color: #ffffffc4;
+    height: 94%;
+    width: 50%;
+    right: 0px;
+}
+
+.item{
+    width: 100%;
+    height: auto;
+}
+
+.card-item{
+    padding: 10px;
+}

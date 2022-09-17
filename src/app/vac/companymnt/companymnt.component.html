@@ -1,0 +1,500 @@
+<section>
+  <!-- <div class="title-companymnt">
+      <h2 class="title-text text-capitalize text-center" id="">| {{LANGUAGE.companymnt_menu}} |
+      </h2>
+  </div> -->
+</section>
+
+<div class="row contain-row" *ngIf="!displayDetail">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-title">{{LANGUAGE.companymnt_menu}}</div>
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+        </mat-form-field>
+        <button class="btn btn-vac" (click)="addClick()" >
+          <i class="i-Male-21"></i>+
+        </button>
+        <button class="btn btn-vac" (click)="openSearchCompanyModal()" >
+          <i class="i-Male-21"></i>Search
+        </button>
+      
+        
+        <table mat-table [dataSource]="dataSource" matSort>
+        
+          <!-- Check Column -->
+          <!-- <ng-container matColumnDef="checked">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Check</th>
+            <td mat-cell *matCellDef="let element"> 
+              <mat-checkbox [(ngModel)]="element.checked"></mat-checkbox>
+            </td>
+          </ng-container> -->
+        
+          <!-- CompCode Column -->
+          <ng-container matColumnDef="compCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+            <td mat-cell *matCellDef="let element"> {{element.compCode}} </td>
+          </ng-container>
+        
+          <!-- NameTh Column -->
+          <ng-container matColumnDef="nameTh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name (Thai)</th>
+            <td mat-cell *matCellDef="let element"> {{element.nameTh}} </td>
+          </ng-container>
+        
+          <!-- NameEn Column -->
+          <ng-container matColumnDef="nameEn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name (Eng)</th>
+            <td mat-cell *matCellDef="let element"> {{element.nameEn}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+          (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
+          (click)="rowClick(row)">
+          </tr>
+        
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>   
+          </tr>
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        
+        <div class ="row">
+          <div class="col-md-4 btn-profile3" style="text-align: -webkit-left;padding:5px;">
+            <a href="" class="btn btn-vac btn-width" role="button"  >{{LANGUAGE.btngoMain}}</a>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row contain-row" *ngIf="displayDetail">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="text-title">{{LANGUAGE.companymnt_menu}}</div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="compCode" style="margin-top: 10px;">{{LANGUAGE.companymnt_compCode}} <span class="text-red">*</span></label>
+                  <input *ngIf="addFlag" type="text" [(ngModel)]="compCode" name="compCode" id="compCode">
+                  <input *ngIf="!addFlag" type="text" disabled="disabled" [(ngModel)]="compCode" name="compCode" id="compCode">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nameTh" style="margin-top: 10px;">{{LANGUAGE.companymnt_nameTh}} <span class="text-red">*</span></label>
+                  <input type="text" [(ngModel)]="nameTh" name="nameTh" id="nameTh">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nameEn" style="margin-top: 10px;">{{LANGUAGE.companymnt_nameEn}} <span class="text-red">*</span></label>
+                  <input type="text" [(ngModel)]="nameEn" name="nameEn" id="nameEn">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="addr1" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr1}} </label>
+                  <input type="text" [(ngModel)]="addr1" name="addr1" id="addr1">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="addr2" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr2}} </label>
+                  <input type="text" [(ngModel)]="addr2" name="addr2" id="addr2">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="addr3" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr3}} </label>
+                  <input type="text" [(ngModel)]="addr3" name="addr3" id="addr3">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="zip" style="margin-top: 10px;"> {{LANGUAGE.companymnt_zip}} </label>
+                  <input type="text" [(ngModel)]="zip" name="zip" id="zip">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="tel" style="margin-top: 10px;"> {{LANGUAGE.companymnt_tel}} </label>
+                  <input type="text" [(ngModel)]="tel" name="tel" id="tel">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="fax" style="margin-top: 10px;"> {{LANGUAGE.companymnt_fax}} </label>
+                  <input type="text" [(ngModel)]="fax" name="fax" id="fax">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" style="margin-top: 10px;"> {{LANGUAGE.companymnt_email}} </label>
+                  <input type="text" [(ngModel)]="email" name="email" id="email">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="webSite" style="margin-top: 10px;"> {{LANGUAGE.companymnt_webSite}} </label>
+                  <input type="text" [(ngModel)]="webSite" name="webSite" id="webSite">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="regId" style="margin-top: 10px;"> {{LANGUAGE.companymnt_regId}} </label>
+                  <input type="text" [(ngModel)]="regId" name="regId" id="regId">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="regDate" style="margin-top: 10px;"> {{LANGUAGE.companymnt_regDate}} </label>
+                  <input type="text" [(ngModel)]="regDate" name="regDate" id="regDate">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="vatRate" style="margin-top: 10px;"> {{LANGUAGE.companymnt_vatRate}} </label>
+                  <input type="text" [(ngModel)]="vatRate" name="vatRate" id="vatRate">
+                </div>
+              </div>
+              <div class="col-md-6">
+              </div>
+            </div>
+            <div class ="row">
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="saveClick()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+                </button>
+              </div>
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="deleteClick()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoDelete}}
+                </button>
+              </div>
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="goHome()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoMain}}
+                </button>
+              </div>   
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="panel panel-default" *ngIf="!addFlag">
+      <div class="panel-heading">
+        <div class="row">
+          <button class="btn btn-vac" (click)="addBranchClick()" >
+            <i class="i-Male-21"></i>+
+          </button>
+            <div class="text-title">Branchs</div>
+        </div>
+      
+        <table mat-table [dataSource]="branchDataSource" matSort>
+
+          <!-- BranchCode Column -->
+          <ng-container matColumnDef="branchCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Branch </th>
+            <td mat-cell *matCellDef="let element"> {{element.branchCode}} </td>
+          </ng-container>
+  
+          <!-- NameTh Column -->
+          <ng-container matColumnDef="nameTh">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name (Thai) </th>
+            <td mat-cell *matCellDef="let element"> {{element.nameTh}} </td>
+          </ng-container>
+  
+          <!-- NameEn Column -->
+          <ng-container matColumnDef="nameEn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name (Eng) </th>
+            <td mat-cell *matCellDef="let element"> {{element.nameEn}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="branchDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: branchDisplayedColumns;"
+            [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
+            (click)="selectBranchClick(row)"
+          >
+          </tr>
+  
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>   
+          </tr>
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <div class ="row">
+          <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+            <button class="btn btn-vac btn-width " (click)="saveRoles()">
+              <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+            </button>
+          </div>
+          <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+            <button class="btn btn-vac btn-width " (click)="goHome()">
+              <i class="i-Male-21"></i>{{LANGUAGE.btngoMain}}
+            </button>
+          </div>   
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+</div>
+
+
+<ng-template #searchCompanyModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closesearchCompanyModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="row">
+              <div class="col-md-1"></div>
+
+              <div class="col-md-10">
+                <div class="form-group">
+                    <label for="searchCompCode">{{LANGUAGE.companymnt_compCode}}</label>
+                    <input type="text"  [(ngModel)]="searchCompCode" id="searchCompCode">
+                    <span class="text-red" *ngIf="searchCompCodeErrorMsg != ''">{{searchCompCodeErrorMsg}}</span>
+                </div>
+                <div class="form-group">
+                  <label for="searchCompName">{{LANGUAGE.companymnt_compName}}</label>
+                  <input type="text" [(ngModel)]="searchCompName" id="searchCompName">
+                  <span class="text-red" *ngIf="searchCompNameErrorMsg != ''">{{searchCompNameErrorMsg}}</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-rounded chang-img btn-vac btn-outline-primary btn-outline-email btn-icon-text" (click)="searchCompany()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.companymnt_btnSearch}}
+              </button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+
+<ng-template #confirmDeleteModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closesearchCompanyModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1 class="text-center text-red mb-4">{{LANGUAGE.ConfirmDelete}}</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-vac" style="width: 45%;" (click)="deleteRecord()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnYes}}
+              </button>
+              <button class="btn btn-vac" style="width: 45%;" (click)="goHome()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnNo}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #branchModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="p-3">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchCode" style="margin-top: 10px;">{{LANGUAGE.companymnt_branchCode}} <span class="text-red">*</span></label>
+                <input *ngIf="addBranchFlag" type="text" [(ngModel)]="branchCode" name="branchCode" id="branchCode">
+                <input *ngIf="!addBranchFlag" type="text" disabled="disabled" [(ngModel)]="branchCode" name="branchCode" id="branchCode">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nameTh" style="margin-top: 10px;">{{LANGUAGE.companymnt_nameTh}} <span class="text-red">*</span></label>
+                <input type="text" [(ngModel)]="branchNameTh" name="branchNameTh" id="branchNameTh">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchNameEn" style="margin-top: 10px;">{{LANGUAGE.companymnt_nameEn}} <span class="text-red">*</span></label>
+                <input type="text" [(ngModel)]="branchNameEn" name="branchNameEn" id="branchNameEn">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchAddr1" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr1}} </label>
+                <input type="text" [(ngModel)]="branchAddr1" name="branchAddr1" id="branchAddr1">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchAddr2" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr2}} </label>
+                <input type="text" [(ngModel)]="branchAddr2" name="branchAddr2" id="branchAddr2">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchAddr3" style="margin-top: 10px;"> {{LANGUAGE.companymnt_addr3}} </label>
+                <input type="text" [(ngModel)]="branchAddr3" name="branchAddr3" id="branchAddr3">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchZip" style="margin-top: 10px;"> {{LANGUAGE.companymnt_zip}} </label>
+                <input type="text" [(ngModel)]="branchZip" name="branchZip" id="branchZip">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchTel" style="margin-top: 10px;"> {{LANGUAGE.companymnt_tel}} </label>
+                <input type="text" [(ngModel)]="branchTel" name="branchTel" id="branchTel">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchFax" style="margin-top: 10px;"> {{LANGUAGE.companymnt_fax}} </label>
+                <input type="text" [(ngModel)]="branchFax" name="branchFax" id="branchFax">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchWebSite" style="margin-top: 10px;"> {{LANGUAGE.companymnt_webSite}} </label>
+                <input type="text" [(ngModel)]="branchWebSite" name="branchWebSite" id="branchWebSite">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchRegId" style="margin-top: 10px;"> {{LANGUAGE.companymnt_regId}} </label>
+                <input type="text" [(ngModel)]="branchRegId" name="branchRegId" id="branchRegId">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchRegDate" style="margin-top: 10px;"> {{LANGUAGE.companymnt_regDate}} </label>
+                <input type="text" [(ngModel)]="branchRegDate" name="branchRegDate" id="branchRegDate">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchVatRate" style="margin-top: 10px;"> {{LANGUAGE.companymnt_vatRate}} </label>
+                <input type="text" [(ngModel)]="branchVatRate" name="branchVatRate" id="branchVatRate">
+              </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+          </div>
+       
+          <div class ="row">
+            <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+              <button class="btn btn-vac btn-width " (click)="saveBranchClick()">
+                <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+              </button>
+            </div>
+            <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+              <button class="btn btn-vac btn-width " (click)="deleteBranchClick()">
+                <i class="i-Male-21"></i>{{LANGUAGE.btngoDelete}}
+              </button>
+            </div>
+            <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+              <button class="btn btn-vac btn-width " (click)="closeBranchModal()">
+                <i class="i-Male-21"></i>{{LANGUAGE.btngoClose}}
+              </button>
+            </div>   
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #confirmBranchDeleteModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closeBranchModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="row">
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1 class="text-center text-red mb-4">{{LANGUAGE.ConfirmDelete}}</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-vac" style="width: 45%;" (click)="branchDeleteRecord()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnYes}}
+              </button>
+              <button class="btn btn-vac" style="width: 45%;" (click)="closeBranchModal()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnNo}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

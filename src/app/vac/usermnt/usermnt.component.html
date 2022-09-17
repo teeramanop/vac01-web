@@ -1,0 +1,313 @@
+<section>
+  <!-- <div class="title-usermnt">
+      <h2 class="title-text text-capitalize text-center" id="">| {{LANGUAGE.usermnt_menu}} |
+      </h2>
+  </div> -->
+</section>
+
+<div class="row contain-row" *ngIf="!displayDetail">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-title">{{LANGUAGE.usermnt_menu}}</div>
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+        </mat-form-field>
+        <button class="btn btn-vac" (click)="addClick()" >
+          <i class="i-Male-21"></i>+
+        </button>
+        <button class="btn btn-vac" (click)="openSearchUserModal()" >
+          <i class="i-Male-21"></i>Search
+        </button>
+      
+        
+        <table mat-table [dataSource]="dataSource" matSort>
+        
+          <!-- Check Column -->
+          <!-- <ng-container matColumnDef="checked">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Check</th>
+            <td mat-cell *matCellDef="let element"> 
+              <mat-checkbox [(ngModel)]="element.checked"></mat-checkbox>
+            </td>
+          </ng-container> -->
+        
+          <!-- UserId Column -->
+          <ng-container matColumnDef="userId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+            <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+          </ng-container>
+        
+          <!-- Company Column -->
+          <ng-container matColumnDef="compCode">
+            <th mat-header-cell *matHeaderCellDef> Company </th>
+            <td mat-cell *matCellDef="let element"> {{element.compCode}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+          (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
+          (click)="rowClick(row)">
+          </tr>
+        
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>   
+          </tr>
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        
+        <div class ="row">
+          <div class="col-md-4 btn-profile3" style="text-align: -webkit-left;padding:5px;">
+            <a href="" class="btn btn-vac btn-width" role="button"  >{{LANGUAGE.btngoMain}}</a>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row contain-row" *ngIf="displayDetail">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="text-title">{{LANGUAGE.usermnt_menu}}</div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userId" style="margin-top: 10px;">{{LANGUAGE.usermnt_userId}} <span class="text-red">*</span></label>
+                  <input *ngIf="addFlag" type="text" [(ngModel)]="userId" name="userId" id="userId">
+                  <input *ngIf="!addFlag" type="text" disabled="disabled" [(ngModel)]="userId" name="userId" id="userId">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" style="margin-top: 10px;"> {{LANGUAGE.usermnt_email}} </label>
+                  <input type="text" [(ngModel)]="email" name="email" id="email">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userFname">{{LANGUAGE.usermnt_userFname}} <span class="text-red">*</span></label>
+                  <input type="text" [(ngModel)]="userFname" name="userFname" id="userFname" required>
+                  <span class="text-red" *ngIf="userFnameErrorMsg != ''">{{userFnameErrorMsg}}</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userLname">{{LANGUAGE.usermnt_userLname}} <span class="text-red">*</span></label>
+                  <input type="text"  [(ngModel)]="userLname" name="userLname" id="userLname">
+                  <span class="text-red" *ngIf="userLnameErrorMsg != ''">{{userLnameErrorMsg}}</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label for="phone1">{{LANGUAGE.usermnt_phone1}}</label>
+                    <input type="text" [(ngModel)]="phone1" name="phone1" id="phone1" placeholder="" (keypress)="numberOnly($event)"   maxlength="10">
+                    <span class="text-red" *ngIf="phone1ClassErrorMsg != ''">{{phone1ErrorMsg}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label for="phone2">{{LANGUAGE.usermnt_phone2}}</label>
+                    <input type="text" [(ngModel)]="phone2" name="phone2" id="phone2" placeholder="" (keypress)="numberOnly($event)"  maxlength="10" >
+                    <span class="text-red" *ngIf="phone2ClassErrorMsg != ''">{{telClass2ErrorMsg}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label for="password">{{LANGUAGE.usermnt_password}}</label>
+                    <input type="text" [(ngModel)]="password" name="password" id="password" placeholder="" (keypress)="numberOnly($event)"  maxlength="4">
+                    <span class="text-red" *ngIf="passwordClassErrorMsg != ''">{{passwordClassErrorMsg}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+              </div>
+            </div>
+            <div class ="row">
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="saveClick()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+                </button>
+              </div>
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="deleteClick()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoDelete}}
+                </button>
+              </div>
+              <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+                <button class="btn btn-vac btn-width " (click)="goHome()">
+                  <i class="i-Male-21"></i>{{LANGUAGE.btngoMain}}
+                </button>
+              </div>   
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="panel panel-default" *ngIf="!addFlag">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="text-title">Roles</div>
+        </div>
+      
+        <table mat-table [dataSource]="roleDataSource" matSort>
+
+          <!-- Check Column -->
+          <ng-container matColumnDef="checked">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Check</th>
+            <td mat-cell *matCellDef="let element"> 
+              <mat-checkbox [(ngModel)]="element.checked"></mat-checkbox>
+            </td>
+          </ng-container>
+  
+          <!-- RoleId Column -->
+          <ng-container matColumnDef="roleId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+            <td mat-cell *matCellDef="let element"> {{element.roleId}} </td>
+          </ng-container>
+  
+          <!-- Description Column -->
+          <ng-container matColumnDef="roleDesc">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.roleDesc}} </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="roleDisplayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: roleDisplayedColumns;"
+            [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}"
+            (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"
+          >
+          </tr>
+  
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>   
+          </tr>
+        </table>
+  
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <div class ="row">
+          <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+            <button class="btn btn-vac btn-width " (click)="saveRoles()">
+              <i class="i-Male-21"></i>{{LANGUAGE.btngoSave}}
+            </button>
+          </div>
+          <div class="col-md-4 btn-profile2" style="text-align: -webkit-center;padding:5px">
+            <button class="btn btn-vac btn-width " (click)="goHome()">
+              <i class="i-Male-21"></i>{{LANGUAGE.btngoMain}}
+            </button>
+          </div>   
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+</div>
+
+
+<ng-template #searchUserModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closesearchUserModalModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="row">
+              <div class="col-md-1"></div>
+
+              <div class="col-md-10">
+                <div class="form-group">
+                    <label for="searchUserId">{{LANGUAGE.usermnt_userId}}</label>
+                    <input type="text"  [(ngModel)]="searchUserId" id="searchUserId">
+                    <span class="text-red" *ngIf="searchUserIdErrorMsg != ''">{{searchUserIdErrorMsg}}</span>
+                </div>
+                <div class="form-group">
+                  <label for="searchUserId">{{LANGUAGE.usermnt_userName}}</label>
+                  <input type="text" [(ngModel)]="searchUserName" id="searchUserName">
+                  <span class="text-red" *ngIf="searchUserNameErrorMsg != ''">{{searchUserIdErrorMsg}}</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-rounded chang-img btn-vac btn-outline-primary btn-outline-email btn-icon-text" (click)="searchUser()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.usermnt_btnSearch}}
+              </button>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+
+<ng-template #confirmDeleteModal let-modal>
+  <div class="service" style="margin-left: 13px;">
+    <div class="card o-hidden">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="modal-header button-close-header">
+        <a id="Close" name = "close" type="button" class="close" (click)="closesearchUserModalModal()" aria-label="Close" style="cursor: default;">
+          <span aria-hidden="true"   title="ปิด" class = "span-close-button">X</span>
+        </a>
+        </div>
+        <div class="p-3">
+          <div class="auth-logo text-center mb-4">
+            <img src="./assets/images/logo/logo.jpeg" alt="" class="img-logo">
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <h1 class="text-center text-red mb-4">{{LANGUAGE.ConfirmDelete}}</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+            <div class="col-md-6" style="text-align: center;">
+              <button class="btn btn-vac" style="width: 45%;" (click)="deleteRecord()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnYes}}
+              </button>
+              <button class="btn btn-vac" style="width: 45%;" (click)="goHome()" triggers="enter:click">
+                <i class="i-Male-21"></i> {{LANGUAGE.btnNo}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

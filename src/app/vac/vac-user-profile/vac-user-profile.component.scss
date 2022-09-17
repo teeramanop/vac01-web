@@ -1,0 +1,454 @@
+@media only screen and (max-device-width: 480px) {
+   .contain-row{
+        padding: 10px 0 10px 0px !important;
+        margin: initial;
+    }
+    .img-logo1{
+        width: 90% !important;
+    }
+    .img-logo{
+        height: 200px !important;
+        width: 200px !important;
+        }
+ }
+
+ @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+    .contain-row{
+        padding: 10px 0 10px 0px !important;
+        margin: initial;
+    }
+    .btn-profile1{
+        text-align: -webkit-center !important;
+        padding:5px !important;
+    }
+    .btn-profile3{
+        text-align: -webkit-center !important;
+        padding:5px !important;
+    }
+    .buttom-width-mobile{
+        width:67% !important;
+    }
+    .img-logo{
+        height: 130px !important;
+        width: 130px !important;
+        }
+
+    .img-logo1{
+        width: 90% !important;
+    }
+    .chang-img{
+        width: 69% !important;
+    }
+    .chang-img1{
+        width: 79% !important;
+    }
+    .btn-width {
+        width: 95% !important;
+    }
+    
+ }
+
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+ .contain-row{
+        padding: 10px 0 10px 0px !important;
+        margin: initial;
+    }
+    .btn-width {
+        width: 90% !important;
+    }
+    .img-logo{
+        height: 160px !important;
+        width: 160px !important;
+    }
+    .img-logo1{
+        width: 80% !important;
+    }
+    
+    
+}
+
+@media screen and (min-width: 1280px){
+   .contain-row{
+        padding: 10px 250px 10px 250px !important;
+        margin: initial;
+    }
+}
+
+@media screen and (min-width: 1355px){
+   .contain-row{
+        padding: 10px 250px 10px 250px !important;
+        margin: initial;
+    }
+}
+
+@media screen and (min-width: 1755px){
+    .contain-row{
+        padding: 10px 250px 10px 250px !important;
+        margin: initial;
+    }
+    
+}
+.chang-img{
+    width: 100%;
+}
+.circle{ /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+    // height: auto;  /* ความสูงปรับให้เป็นออโต้ */
+    // width: auto;  /* ความสูงปรับให้เป็นออโต้ */
+    // border: 15px outset #73a4c6 ;  /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+    // border-radius: 50%; /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
+    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 17px double #73a4c6;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+.margin-right15{
+    margin-right: 15px;
+}
+.contain-row{
+        padding: 10px 0px 10px 0px;
+        margin: initial;
+}
+.buttom-width-mobile{
+    width:100%
+}
+
+.btn-default.btn-green {
+    border: transparent;
+    position: relative;
+    background-color: #4bba79;
+    // background-image: -webkit-gradient(linear, left top, left bottom, from(#F66E54), to(#FF534B));
+    // background-image: linear-gradient(#F66E54, #FF534B);
+    // background-image: -webkit-gradient(linear, left top, right top, from(#F66E54), color-stop(#FF534B), color-stop(#FF534B), to(#F66E54));
+    // background-image: linear-gradient(to right, #F66E54, #FF534B, #FF534B, #F66E54);
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-size: 300% 100%;
+}
+.btn-width {
+    width: 85%;
+}
+.text-margin{
+    margin-bottom: 15px;
+}
+// ABOUT US ICON COLLECTION
+.icon-aboutus {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; 
+}
+.icon-aboutus .about-icon {
+    margin: 0 18px;
+    -webkit-filter: drop-shadow(0 0 10px #eee);
+            filter: drop-shadow(0 0 10px #eee);
+    border-radius: 20px;
+    background-color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; 
+}
+.icon-aboutus .about-icon a {
+    padding: 18px 20px; 
+}
+.icon-aboutus .about-icon:hover {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background-color: #4bba79; 
+}
+.icon-aboutus .about-icon:hover a h5, .icon-collection .about-icon:hover a h6, .icon-collection .about-icon:hover a h4 {
+    color: #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s; 
+}
+
+/// New Modal Design
+.bg-careadviser{
+    background-color: #74a5c6;
+    width:100%;
+    margin-bottom:22%;
+    padding-top: 30%;
+}
+.container-careadvisor{
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    right: 15%;
+}
+
+
+.panel-form{
+    border: 1px solid #cccccc;
+    padding: 30px 15px 15px 15px;
+    border-radius: 10px;
+}
+.title-panel{
+    font-size: 15pt;
+    font-weight: 800;
+    padding: 0px 10px 0px 10px;
+    position: absolute;
+    margin: -47px 0px 0px 0px;
+    background-color: #ffffff;
+}
+
+.btn-grnstar{
+    height: 30px;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+}
+
+.panel{
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.panel-heading{
+    padding: 70px 36px 68px 36px;
+    background-color: #555c65;
+    color: #4fac8b;
+    font-size: 13pt;
+    font-weight: 800;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.panel-body{
+    padding: 15px 15px 15px 15px;
+    font-size: 14pt;
+    border-radius: 0px 0px 20px 20px;
+    background-color: #555c65;
+}
+.text-title{
+    border-bottom: 3px solid #a9acb1;
+    padding: 3px 0px 10px 0px;
+    margin: 0px 5px 0px 5px;
+}
+.label-service{
+    font-size: 13pt;
+    font-weight: 800;
+    color: #bac2c8;
+}
+.img-logo{
+    height: 180px;
+    width: 180px ;
+}
+.img-logo1{
+    width: 70%;
+}
+.label-service{
+    font-size: 13pt;
+    font-weight: 800;
+    color: #bac2c8;
+}
+
+label{
+    font-size: 12pt;
+    color: #bac2c8;
+}
+
+.span-service{
+    color: #fff;
+    font-size: 12pt;
+}
+
+.lable-title{
+    font-size: 16pt;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.label-service-detail{
+    color: #66b2e9;
+}
+
+.hr-vac{
+    border-top: 1px dashed #a9acb1;
+}
+
+.btn-white {
+    background-color: #67b2e9;
+    border: 2px solid #67b2e9;
+    color: #fff !important;
+    font-size: 14pt;
+    padding: 5px 20px 5px 20px;
+}
+.btn-white:hover, .btn-white:focus, .btn-white:active {
+    background-color: #3884c5;
+    color: #fff !important;
+    border: 2px solid #3884c5;
+    font-size: 14pt;
+    padding: 5px 20px 5px 20px;
+}
+.btn-white.border-not {
+      border: none; 
+}
+
+.text-red{
+    color: red;
+    font-size: 11pt;
+}
+
+.box-profile{
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    height: 250px;
+    box-shadow: 2px 2px 12px #aaaaaa;
+}
+
+.input-vac{
+    height: 30px;
+    font-size: 12pt;
+    padding: 3px 5px 3px 5px;
+}
+.btn-grnstar{
+    height: 30px;
+    padding: 3px 10px 3px 10px;
+    border-radius: 5px;
+}
+.btn-cancel-caregiver{
+    width: 100%;
+    padding: 10px;
+    background-color: red;
+    border-radius: 20px;
+    color: #fff;
+    height: 45px;
+}
+.btn-caregiver{
+    padding: 10px;
+    background-color: #4fad8a;
+    border-radius: 20px;
+    color: #fff;
+    height: 45px;
+}
+.btn-caregiver:hover{
+    border: 1px solid #4fad8a;
+    background-color: #fff;
+    color: #4fad8a;
+}
+
+.btn-caregiver1{
+    padding: 10px;
+    background-color: #3884c5;
+    border-radius: 20px;
+    color: #fff;
+    border-color: #fffafa00 !important;
+    height: 45px;
+}
+.btn-caregiver1:hover{
+    border: 1px solid #5f95f8;
+    background-color: #fff;
+    border-color: #fffafa00 !important;
+    color: #3884c5;
+}
+
+
+.btn-caregiver2{
+    padding: 10px;
+    background-color: #f70f0f;
+    border-radius: 20px;
+    color: #fff;
+    height: 45px;
+}
+.btn-caregiver2:hover{
+    border: 1px solid #f70f0f;
+    background-color: #fff;
+    color: #f70f0f;
+}
+.input-vac-err{
+    height: 30px;
+    font-size: 12pt;
+    padding: 3px 5px 3px 5px;
+    color: red;
+    border-color: red;
+    border: solid;
+}
+::ng-deep .modal-content{
+    background-color: transparent;
+    border-radius: 10px;
+    border : 0px;
+}
+
+.service{
+    background-color: #292929c4;
+    border-radius: 20px;
+}
+.input-label-font{
+    color: #f7f8f8;
+    font-size: 17px;
+}
+.input-title{
+    color : #bbc2c8;
+}
+.modal-content{
+    
+    background-color: #29292900 !important;
+}
+
+.card{
+    background-color: #292929 !important;
+    border-radius: 20px;
+}
+.button-close-header{
+    border-bottom: 0px;
+    height: 1px;
+    padding-top: 5px;
+}
+.span-close-button{
+    color: white;
+    font-size: 12pt;
+}
+.user-profile{
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.title-user-profile{
+    background-color: #73a4c6;
+    height: 210px;
+}
+.title-text{
+    font-size: 27px;
+    font-weight: 800;
+    color: #fff;
+    padding-block-start: 135px;
+}
+
+@media only screen and (min-width: 960px) {
+    /* styles for browsers larger than 960px; */
+}
+@media only screen and (min-width: 1440px) {
+    /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width: 2000px) {
+    /* for sumo sized (mac) screens */
+}
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+}
+
+.hidden-file{
+    display: none;
+}
+.item{
+    width: 200px;
+    min-height: 200px;
+}
+.btn-profile3{
+    text-align: -webkit-left;padding:5px;
+}
+.btn-profile2{
+    text-align: -webkit-center;padding:5px
+}
+.btn-profile1{
+    text-align: -webkit-right;padding:5px;
+}
