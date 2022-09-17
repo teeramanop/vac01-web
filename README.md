@@ -1,5 +1,5 @@
 # Sample angular 
-work with vac01-app:Spring boot
+work with vac01-app:Spring boot.
 
 
 # Ultimate
